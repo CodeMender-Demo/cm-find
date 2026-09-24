@@ -12,6 +12,12 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Install CodeMender
+      uses: codemender-demo/cm-install@v0.1
+      with:
+        workload_identity_provider: ${{ inputs.workload_identity_provider }}
+        service_account: ${{ inputs.service_account }}
+  
     - name: Update config.yaml with file types
       shell: python
       run: |
@@ -61,12 +67,6 @@ runs:
     - name: Print config.yaml
       shell: bash
       run: cat ~/.codemender/config.yaml
-
-    - name: Install CodeMender
-      uses: codemender-demo/cm-install@v0.1
-      with:
-        workload_identity_provider: ${{ inputs.workload_identity_provider }}
-        service_account: ${{ inputs.service_account }}
         
     - name: Run cm find
       shell: bash
