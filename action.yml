@@ -1,0 +1,11 @@
+name: CodeMender Find
+description: Scans a repository for vulnerabilities
+
+runs:
+  using: composite
+  steps:
+    - name: Run cm find
+      shell: bash
+      run: |
+        echo "Running in dir: $(pwd)"
+        cm find .
