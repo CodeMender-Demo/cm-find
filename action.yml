@@ -64,6 +64,9 @@ runs:
 
     - name: Install CodeMender
       uses: codemender-demo/cm-install@v0.1
+      with:
+        workload_identity_provider: ${{ inputs.workload_identity_provider }}
+        service_account: ${{ inputs.service_account }}
         
     - name: Run cm find
       shell: bash
